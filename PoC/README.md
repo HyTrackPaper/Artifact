@@ -65,7 +65,7 @@
 ### Building
 
 #### Docker
-- `docker run -it -v /home/malte/projects/customtabtrack/reviewartifact/Code:/in --entrypoint=bash runmymind/docker-android-sdk:ubuntu-standalone-20250210`
+- in the `PoC` directory run `docker run -it -v ./:/in --entrypoint=bash runmymind/docker-android-sdk:ubuntu-standalone-20250210`
 - cd into `/in`
 - in both app dirs, run `./gradlew assemble`
 

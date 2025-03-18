@@ -38,6 +38,7 @@ func Visit(endpoint string, websiteSlice []entities.RankingTuple, protocolHash m
 		log.Print(err)
 	}
 	c.OnRequest(func(r *colly.Request) {
+		// fmt.Println(r)
 		//r.Headers.Set("Referer", "http://YOUR-INSTUTION.example.org/")
 		//r.Headers.Set("XYZ-Research-Project", "wellKnownCrawler")
 	})
@@ -79,16 +80,19 @@ func Visit(endpoint string, websiteSlice []entities.RankingTuple, protocolHash m
 			continue
 		}
 		if val, ok := protocolHash[md5.Sum([]byte(currentWebsite.Url))]; ok {
-			var prefix string
-			prefix = combinations[val[0]]
-			if endpoint != "" {
-				visitUrl = currentWebsite.Url + "/" + endpoint
-			} else {
-				visitUrl = currentWebsite.Url
-			}
-			err := c.Visit(prefix + visitUrl)
-			if err != nil {
-				log.Print(err)
+			for i, prefix := range combinations {
+				if !valueInSlice(i, val) { // check if HEAD request was successful
+					continue
+				}
+				if endpoint != "" {
+					visitUrl = currentWebsite.Url + "/" + endpoint
+				} else {
+					visitUrl = currentWebsite.Url
+				}
+				err := c.Visit(prefix + visitUrl)
+				if err != nil {
+					log.Print(err)
+				}
 			}
 		}
 	}

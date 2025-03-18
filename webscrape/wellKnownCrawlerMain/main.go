@@ -19,7 +19,7 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
-var combinations []string = []string{"http://www.", "http://", "https://www.", "https://"}
+var combinations []string = []string{"https://www.", "https://"} // TWA DAL's exist only on https:
 
 type safeProtocolHash struct {
 	mu           sync.Mutex

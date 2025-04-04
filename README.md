@@ -1,5 +1,9 @@
 # README
 
+=== Please refer to the the stable artifact at https://doi.org/10.5281/zenodo.14718794 ===
+
+---
+
 This is the artifact for our USENIX SECURITY 2025 Paper "HyTrack: Resurrectable and Persistent Tracking Across Android Apps and the Web".
 We propose a new mobile tracking technique and search for it in the wild.
 
